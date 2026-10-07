@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+
+    background:
+        radial-gradient(circle at 15% 15%, #ff4f81 0%, transparent 28%),
+        radial-gradient(circle at 85% 80%, #7c3cff 0%, transparent 30%),
+        linear-gradient(135deg, #100014, #26001f, #08000d);
+
+    padding: 30px 15px;
+}
+
+/* Background glow */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+    filter: blur(100px);
+
+    opacity: .25;
+    pointer-events: none;
+}
+
+body::before {
+    background: #ff3977;
+    top: -130px;
+    left: -100px;
+}
+
+body::after {
+    background: #9b45ff;
+    bottom: -130px;
+    right: -100px;
+}
+
+/* Main Card */
+
+.card {
+    position: relative;
+    z-index: 5;
+
+    width: min(92%, 650px);
+
+    padding: 50px 35px;
+
+    text-align: center;
+
+    background: rgba(255,255,255,.075);
+
+    border: 1px solid rgba(255,255,255,.18);
+
+    border-radius: 35px;
+
+    backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 60px rgba(255,50,130,.22),
+        inset 0 0 35px rgba(255,255,255,.03);
+
+    animation: appear 1.3s ease;
+}
+
+/* Sparkle */
+
+.sparkle {
+    color: #ffd1df;
+    font-size: 25px;
+
+    animation: sparkle 2s infinite;
+}
+
+/* Top text */
+
+.top {
+    margin-top: 10px;
+
+    color: #ffb5cb;
+
+    font-size: 13px;
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+/* Heading */
+
+h1 {
+    margin-top: 20px;
+
+    font-size: clamp(55px, 12vw, 90px);
+    line-height: .9;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #ff7ca5,
+            #ffffff,
+            #ff4c8a
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: shine 4s linear infinite;
+}
+
+h1 span {
+    -webkit-text-fill-color: #ff4c86;
+
+    filter:
+        drop-shadow(0 0 10px #ff4c86)
+        drop-shadow(0 0 25px #ff4c86);
+}
+
+/* Line */
+
+.line {
+    width: 90px;
+    height: 2px;
+
+    margin: 25px auto;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ff6f9d,
+        transparent
+    );
+}
+
+/* Subtitle */
+
+.subtitle {
+    color: #ffd1df;
+    line-height: 1.7;
+}
+
+/* Heart */
+
+.big-heart {
+    margin: 25px 0;
+
+    font-size: 95px;
+
+    color: #ff3f78;
+
+    filter:
+        drop-shadow(0 0 12px #ff3f78)
+        drop-shadow(0 0 35px #ff3f78);
+
+    animation: heartbeat 1.2s infinite;
+}
+
+/* Messages */
+
+.message {
+    max-width: 520px;
+
+    margin: 18px auto;
+
+    color: #f8dce8;
+
+    font-size: 16px;
+
+    line-height: 1.85;
+}
+
+/* Button */
+
+button {
+    margin-top: 25px;
+
+    padding: 16px 30px;
+
+    border: none;
+    border-radius: 50px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3977,
+            #a348ff
+        );
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 20px rgba(255,60,130,.45);
+
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-4px) scale(1.06);
+
+    box-shadow:
+        0 0 35px rgba(255,60,130,.75);
+}
+
+/* Secret message */
+
+.secret {
+    display: none;
+
+    margin-top: 35px;
+
+    padding: 30px 22px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,.07);
+
+    border: 1px solid rgba(255,130,170,.2);
+
+    animation: reveal 1s ease;
+}
+
+.secret.show {
+    display: block;
+}
+
+.secret-heart {
+    font-size: 55px;
+
+    animation: heartbeat 1s infinite;
+}
+
+.secret h2 {
+    margin: 10px 0 15px;
+
+    color: #ff719e;
+
+    font-size: 36px;
+
+    text-shadow:
+        0 0 10px #ff3f78,
+        0 0 25px #ff3f78;
+}
+
+.secret p {
+    color: #f7dce8;
+    line-height: 1.8;
+}
+
+.soft {
+    margin-top: 15px;
+    color: #ffb4ca !important;
+}
+
+.flowers {
+    margin-top: 22px;
+    font-size: 32px;
+}
+
+/* Tulips */
+
+.tulips {
+    position: fixed;
+
+    bottom: 5px;
+
+    z-index: 3;
+
+    font-size: 48px;
+
+    letter-spacing: 4px;
+
+    pointer-events: none;
+
+    animation: sway 4s ease-in-out infinite;
+}
+
+.tulips.left {
+    left: 10px;
+}
+
+.tulips.right {
+    right: 10px;
+}
+
+/* Floating hearts */
+
+#hearts-container {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.floating-heart {
+    position: absolute;
+
+    bottom: -40px;
+
+    color: #ff5b91;
+
+    filter:
+        drop-shadow(0 0 8px #ff3f78);
+
+    animation: floatUp linear forwards;
+}
+
+/* Animations */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: 0%;
+    }
+
+    100% {
+        background-position: 300%;
+    }
+}
+
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes sparkle {
+    0%,100% {
+        transform: scale(1) rotate(0deg);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.4) rotate(180deg);
+        opacity: 1;
+    }
+}
+
+@keyframes reveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0%,100% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+/* Mobile */
+
+@media(max-width:600px) {
+
+    body {
+        padding: 15px 8px;
+    }
+
+    .card {
+        padding: 40px 20px;
+    }
+
+    .big-heart {
+        font-size: 75px;
+    }
+
+    .message {
+        font-size: 15px;
+    }
+
+    .tulips {
+        font-size: 30px;
+    }
+}
